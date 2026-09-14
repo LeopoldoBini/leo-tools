@@ -20,7 +20,7 @@
     {
       "name": "al-grano",
       "description": "Reportes al grano para quien lleva muchas cosas a la vez: /al-grano rehace lo último como parte corto (qué pasó, cómo quedó, qué sigue); /modo-al-grano deja toda la sesión así.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": {
         "name": "Leopoldo Bini"
       },

@@ -1,58 +1,42 @@
 ---
 name: al-grano
-description: "Parte al grano: qué pasó, cómo quedó, qué sigue. Usar cuando Leo pide la versión corta o simple de lo último («hacemela corta», «para tonto», «qué pasó»), o al cerrar una tarea larga o con partes con su reporte final."
+description: "Usar al dar el reporte final de un trabajo con varios pasos, o cuando el usuario pide la versión corta de lo último («hacemela corta», «resumime», «qué pasó»). Da un parte: qué pasó, cómo quedó, qué sigue."
 model-invocable: solo reescribe lo que ya pasó en la conversación; no escribe archivos ni despacha nada
 ---
 
 # al-grano
 
-Leo lleva muchas cosas a la vez. Entra a esta conversación, necesita entender en segundos
-qué está pasando, incorporarlo y volver a lo suyo. El **parte** es eso: señal pura, lo mínimo
-que le deja seguir sin preguntar de nuevo.
+El **parte** es para alguien que lleva muchas cosas a la vez: lo lee en segundos, lo incorpora y
+vuelve a lo suyo. Es corto para que den ganas de leerlo.
 
-Dos casos lo disparan:
+- **Reporte final de un trabajo con pasos:** el reporte sale directamente como parte.
+- **Pedido de la versión corta de lo último:** el parte reescribe lo ya dicho, sin trabajo nuevo.
+  Si al releer algo estaba mal o sin verificar, eso entra.
 
-- **Pide la versión corta de lo último.** El parte reescribe lo ya dicho (la última respuesta, o
-  la tarea entera si fue larga). Trabajo nuevo, cero: si al releer algo quedó sin verificar o
-  estaba mal, eso entra al parte como tal.
-- **Cerrás una tarea larga o con partes.** El reporte final sale directamente como parte.
+## Formato
 
-## Formato del parte
+Etiquetas en negrita al inicio de línea, en este orden; la que no tenga contenido se omite.
 
-Bloques en este orden. El que no tenga contenido real se omite.
+- **Ojo:** riesgo o algo roto que cambia lo que el usuario hace. Va primero.
+- **Pasó:** una línea.
+- **Quedó:** de una a tres líneas, una idea cada una.
+- **Te toca:** decisión o acción del usuario. Lo que tiene que copiar o tipear, en bloque de código.
 
-1. **Ojo** — mala noticia, riesgo, algo roto o sin verificar. Siempre primero, con su título.
-2. **Qué pasó** — una o dos líneas.
-3. **Cómo quedó** — el estado actual, en viñetas cortas de una idea cada una.
-4. **Qué sigue** — separado en *te toca* (decisión o acción de Leo) y *hago yo*. Si a Leo no le
-   toca nada, se dice en una línea.
+Techo: ocho líneas. Lo que no entra es **detalle**, y el detalle se da cuando el usuario lo pide.
+Esa respuesta va completa; la siguiente vuelve al parte.
 
-Lo que Leo tiene que copiar o tipear va en bloque de código, con el nombre exacto.
+## Qué entra
 
-## Qué entra y qué se corta
+Entra aunque pase el techo: un riesgo que cambia una decisión, una decisión del usuario (una línea
+por opción, con su implicancia), una acción suya, un supuesto declarado como tal.
 
-El parte cambia largo por señal, nunca señal por largo. **Entra siempre**, aunque alargue:
+Todo lo demás es detalle: cómo se hizo, nombres técnicos, lo que salió bien sin consecuencia,
+avisos menores.
 
-- riesgos y malas noticias;
-- decisiones que son de Leo, con su implicancia en una línea por opción;
-- lo que Leo tiene que hacer;
-- supuestos declarados como supuestos.
-
-**Se corta**: el recorrido (cómo llegaste), nombres de archivos y funciones, lo que salió bien y
-no cambia nada para Leo, contexto que él ya tiene.
-
-Lenguaje de todos los días, como para alguien inteligente que no es del tema. Un concepto técnico
-nuevo va con analogía de una línea. Frases cortas; la gramática se sacrifica antes que la claridad.
-
-## Detalle a pedido
-
-El detalle se da cuando Leo lo pide («desarrollame X», «más detalle»). Esa respuesta va completa
-y la siguiente vuelve al parte.
+Palabras de todos los días. Un concepto técnico nuevo va con analogía de una línea.
 
 ## Chequeo antes de mandar
 
-El parte está listo cuando cumple las dos:
-
-- Leo lo lee en veinte segundos, sin scroll.
-- Leyendo solo eso, puede seguir sin volver a preguntar: ningún riesgo, decisión suya ni acción
-  pendiente quedó afuera.
+- Se lee en veinte segundos.
+- Con eso solo, el usuario sigue sin volver a preguntar.
+- Cada línea resiste la pregunta «si la borro, ¿pierde algo que necesita hoy?». La que no, se borra.
