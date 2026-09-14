@@ -1,6 +1,6 @@
 ---
 name: al-grano
-description: "Usar al dar el reporte final de un trabajo con varios pasos, o cuando el usuario pide la versión corta de lo último («hacemela corta», «resumime», «qué pasó»). Da un parte: qué pasó, cómo quedó, qué sigue."
+description: "Invocar antes de escribir el mensaje final de una tarea con varios pasos (archivos tocados, comandos corridos), y cuando el usuario pide la versión corta de lo último («hacemela corta», «resumime», «qué pasó»). Formato del parte."
 model-invocable: solo reescribe lo que ya pasó en la conversación; no escribe archivos ni despacha nada
 ---
 
