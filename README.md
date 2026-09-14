@@ -15,6 +15,7 @@ sin depender del resto del stack. Lo que solo tiene sentido junto con el pipelin
 | **memory-flow** | `/revisar_memoria` — barrido batch de la memoria del proyecto, con graduaciones propuestas | Productividad |
 | **yt-transcript** | `/yt-transcript` — transcript de YouTube a un archivo central, con resumen e índice | Productividad |
 | **voice-checkpoint** | `/analizar` — checkpoint de comprensión para dictado por voz, antes de tocar nada | Productividad |
+| **al-grano** | `/al-grano` rehace lo último como parte corto; `/modo-al-grano` deja la sesión así | Productividad |
 
 Instalación: `/plugin install <plugin>@leo-tools`, o `/plugin > Discover`.
 

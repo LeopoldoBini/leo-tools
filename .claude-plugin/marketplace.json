@@ -18,6 +18,16 @@
       "category": "documentation"
     },
     {
+      "name": "al-grano",
+      "description": "Reportes al grano para quien lleva muchas cosas a la vez: /al-grano rehace lo último como parte corto (qué pasó, cómo quedó, qué sigue); /modo-al-grano deja toda la sesión así.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Leopoldo Bini"
+      },
+      "source": "./plugins/al-grano",
+      "category": "productivity"
+    },
+    {
       "name": "clickup",
       "description": "Full ClickUp API integration via direct curl. 100+ endpoints without MCP dependency: tasks, time tracking, docs, comments, custom fields, and more. Per-project config via .claude/clickup.local.md.",
       "version": "1.1.0",

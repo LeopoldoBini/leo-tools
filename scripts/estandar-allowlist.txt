@@ -9,6 +9,7 @@
 to-tickets        # mattpocock-skills
 prd-pipeline      # host-orchestrator (leo-private)
 model             # Claude Code, built-in
+clear             # Claude Code, built-in — modo-al-grano lo nombra como fin del modo
 code-review       # Claude Code, built-in — dark-pattern-scan lo nombra como pieza hermana
 
 # Endpoints de la API de ClickUp, citados como sintaxis que el modelo copia literal
