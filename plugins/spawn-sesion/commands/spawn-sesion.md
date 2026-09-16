@@ -71,14 +71,14 @@ cada vez, sin lista escrita a mano que se pudra. `--help` tiene las opciones —
 Agregá `--bg` sólo si el usuario pide que no se vea. Que se vea es lo bueno: la lee y la puede tomar
 él mismo.
 
-Termina con `estado:`, y ahí está todo. Tres finales:
+Termina con `estado:`, y ahí está todo:
 
 | `estado:` | Qué hacer |
 |---|---|
 | `creada` | Confirmar que el brief entró (abajo) y seguir al paso 2. |
 | `ambiguo` / `sin-coincidencias` | Mostrarle los candidatos y preguntarle cuál. Elegir por él es cómo se termina escribiendo en el repo equivocado. |
 | `sin-host` | La otra máquina no contesta el ssh. Decíselo con el host y el detalle; no reintentes ni la abras acá en su lugar — dónde corre el trabajo lo decide él. |
-| `trabada` | La sesión arrancó y quedó esperando algo en pantalla. Mostrarle esa pantalla y decirle que la conteste desde la ventana, que ya está abierta. Si prefiere no seguir, cerrala (ver Guardrails). |
+| `trabada` | La sesión arrancó y algo en pantalla la frena. **Una sesión abierta queda trabajando**: destrabarla es tuyo. Leé la pantalla (`leerle:` o `cmux read-screen`) y contestá con `cmux send-key` / `tmux send-keys` todo lo que el pedido ya cubre —confianza en la carpeta, confirmar el arranque—, y verificá en la bitácora que el brief entró. Si lo que pregunta es una decisión que el pedido no tomó (credenciales, algo destructivo), traésela al usuario ACÁ con la pantalla y contestala vos con lo que él diga. |
 
 **`creada` habla del proceso, no del encargo**: dice que la sesión arrancó, no que haya leído el
 brief. Eso se confirma en su bitácora, con el `session_id` que devolvió el script:

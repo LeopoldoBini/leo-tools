@@ -1,6 +1,6 @@
 {
   "name": "spawn-sesion",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "Abrir otra sesión de Claude Code con el pedido adentro y una dirección para hablarle: en cualquier carpeta, acá, en árbol propio o en otra máquina de la flota por ssh.",
   "author": {
     "name": "Leopoldo Bini",
