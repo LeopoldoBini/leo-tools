@@ -31,7 +31,9 @@ sesión", y lo que hay que mandar está en la conversación, no en el argumento.
   con esa misma línea.
 - **En qué máquina**: acá, salvo que el trabajo tenga que sobrevivir a que la Mac se apague —una
   corrida AFK larga— o que el pedido nombre una máquina de la flota. Ahí va `--host <maquina>`
-  (`devbox`), y todo pasa allá: el repo se resuelve contra ESE disco, con esas rutas.
+  (`devbox`), y todo pasa allá: el repo se resuelve contra ESE disco, con esas rutas. Por eso, antes
+  de abrirla, `"${CLAUDE_PLUGIN_ROOT}/scripts/al-dia.sh" --para-viajar <carpeta de acá>`: si no
+  sale 0, mostrale lo que lista y ofrecé commitear y pushear; se abre en ok o si él dice que siga igual.
 - **Cómo vuelve la respuesta desde otra máquina**: nace registrada en la cuenta y `SendMessage` la
   alcanza por su `nombre`. Al revés no te ve, así que para que reporte sola al terminar pasale
   `--reportar-a bridge:session_<id>`, el del enlace de esta sesión. Sin esa dirección el retorno se

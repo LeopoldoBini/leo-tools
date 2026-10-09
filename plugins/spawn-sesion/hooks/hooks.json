@@ -1,0 +1,17 @@
+{
+  "description": "Al arrancar, parte de si el repo de la carpeta (y su paraguas) está al día con GitHub",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/scripts/al-dia.sh\" 2>/dev/null || true",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}
