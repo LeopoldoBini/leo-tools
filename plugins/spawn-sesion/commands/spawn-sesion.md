@@ -126,8 +126,10 @@ o de tmux según dónde haya nacido — nunca las dos:
   `nombre_alla` es el nombre que le tocó en su propia máquina: sirve para reconocerla allá, no para
   hablarle desde acá.
 
-Terminás cuando el usuario tiene en la mano el nombre, la referencia y cuál de las dos usar. Eso es lo
-que después le deja pedirte "preguntale a esa".
+**Ante el usuario, la sesión se llama siempre por su `nombre`** —el que le puso Claude Code, el de
+`ListAgents`—: al confirmarla, al reportar, cada vez que vuelva a la charla. Las referencias son para
+tus comandos; con nombre repetido, van entre paréntesis para desempatar. Terminás cuando el usuario
+tiene ese nombre en la mano: es lo que después le deja pedirte "preguntale a esa".
 
 ## Guardrails
 
