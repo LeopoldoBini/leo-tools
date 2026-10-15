@@ -28,7 +28,7 @@ resto son para cuando querés juzgar, diseñar, testear o auditar antes de shipp
 
 ```
 interface-lens/
-  CONTEXT.md                 ← lenguaje compartido: bucle, eje ético, escalas, el par
+  GLOSSARY.md                ← lenguaje compartido: bucle, eje ético, escalas, el par
   references/
     principles.md            ← catálogo de 37 principios (familias A–G)
     dark-patterns.md         ← taxonomía operativa con señales de código por patrón

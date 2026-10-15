@@ -17,7 +17,7 @@ diseñá algo que esa auditoría aprobaría.
 
 Leé ANTES de diseñar:
 
-1. `${CLAUDE_PLUGIN_ROOT}/CONTEXT.md` — bucle, eje ético, términos canónicos
+1. `${CLAUDE_PLUGIN_ROOT}/GLOSSARY.md` — bucle, eje ético, términos canónicos
 2. `${CLAUDE_PLUGIN_ROOT}/references/principles.md` — las 7 familias A–G
 3. `${CLAUDE_PLUGIN_ROOT}/references/dark-patterns.md` — lo que el diseño NO debe hacer
 

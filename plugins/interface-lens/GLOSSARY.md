@@ -1,4 +1,4 @@
-# CONTEXT.md — lenguaje compartido de interface-lens
+# GLOSSARY.md — lenguaje compartido de interface-lens
 
 Glosario canónico del dominio. Las cinco skills razonan con este modelo mental; los
 términos de acá son los únicos nombres válidos para estos conceptos.

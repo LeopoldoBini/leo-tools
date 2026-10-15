@@ -15,7 +15,7 @@ patrones se cuelan por defaults de librerías, copy heredado y código generado 
 ## Paso 0 — Cargar la base de conocimiento
 
 1. `${CLAUDE_PLUGIN_ROOT}/references/dark-patterns.md` — la taxonomía operativa con señales de código por patrón. Es TU checklist; el reporte final responde por cada patrón.
-2. `${CLAUDE_PLUGIN_ROOT}/CONTEXT.md` — asimetría de fricción, prueba del arrepentimiento, escalas.
+2. `${CLAUDE_PLUGIN_ROOT}/GLOSSARY.md` — asimetría de fricción, prueba del arrepentimiento, escalas.
 
 ## Paso 1 — Delimitar la superficie de escaneo
 
@@ -46,7 +46,7 @@ Para cada superficie:
 ## Paso 3 — Calificar cada hallazgo
 
 - **Evidencia obligatoria:** `archivo:línea` (código) o elemento/texto citado (diseño). Sin evidencia no hay hallazgo.
-- **Patrón** de la taxonomía + severidad y confianza (escalas de CONTEXT.md).
+- **Patrón** de la taxonomía + severidad y confianza (escalas de GLOSSARY.md).
 - **Prueba del arrepentimiento** aplicada.
 - **Bandera regulatoria** cuando aplique (click-to-cancel FTC, DSA de la UE — ver sección regulatoria de `dark-patterns.md`): un dark pattern confirmado puede ser pasivo legal, no solo deuda de UX.
 - **Fix concreto** por hallazgo.

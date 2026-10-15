@@ -40,7 +40,7 @@
     {
       "name": "interface-lens",
       "description": "Psicología UX aplicada al código: /glow-up deja una vista hermosa y más usable, /ab-variant produce su par A|B, /ui-judge la audita contra 37 principios, /ux-design propone el flujo, /dark-pattern-scan caza patrones oscuros.",
-      "version": "1.4.0",
+      "version": "1.4.1",
       "author": {
         "name": "Leopoldo Bini"
       },
@@ -49,8 +49,8 @@
     },
     {
       "name": "memory-flow",
-      "description": "Barrido batch de memoria — /revisar_memoria clasifica las memorias por-archivo (vigente, stale, graduable, obsoleta, fusionable) y propone graduaciones a CLAUDE.md/CONTEXT.md. Solo reporta; aplica con OK explícito del usuario.",
-      "version": "2.1.1",
+      "description": "Barrido batch de memoria — /revisar_memoria clasifica las memorias por-archivo (vigente, stale, graduable, obsoleta, fusionable) y propone graduaciones a CLAUDE.md/GLOSSARY.md. Solo reporta; aplica con OK explícito del usuario.",
+      "version": "2.1.2",
       "author": {
         "name": "Leopoldo Bini"
       },

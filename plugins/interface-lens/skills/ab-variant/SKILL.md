@@ -19,7 +19,7 @@ Leé, en este orden, ANTES de mirar el input:
 
 1. `${CLAUDE_PLUGIN_ROOT}/references/ab-pairs.md` — la pregunta, el canje, los siete lugares del delta, los cuatro deltas reversibles. Es el método.
 2. `${CLAUDE_PLUGIN_ROOT}/references/principles.md` — familia **G** completa; A–F para nombrar deltas que caen fuera de conversión.
-3. `${CLAUDE_PLUGIN_ROOT}/CONTEXT.md` — eje ético, prueba del arrepentimiento, escalas.
+3. `${CLAUDE_PLUGIN_ROOT}/GLOSSARY.md` — eje ético, prueba del arrepentimiento, escalas.
 
 `dark-patterns.md` se lee solo si el Paso 4 marca un delta del lado rojo.
 

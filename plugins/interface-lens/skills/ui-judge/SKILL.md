@@ -14,7 +14,7 @@ el filtro ético que las listas de heurísticas no tienen.
 
 Leé estos tres archivos ANTES de mirar el input (son la rúbrica):
 
-1. `${CLAUDE_PLUGIN_ROOT}/CONTEXT.md` — bucle, eje ético, escalas de severidad/confianza
+1. `${CLAUDE_PLUGIN_ROOT}/GLOSSARY.md` — bucle, eje ético, escalas de severidad/confianza
 2. `${CLAUDE_PLUGIN_ROOT}/references/principles.md` — las 7 familias A–G
 3. `${CLAUDE_PLUGIN_ROOT}/references/dark-patterns.md` — taxonomía operativa
 
@@ -39,7 +39,7 @@ Recorré las 7 familias en orden. Por cada familia, buscá violaciones Y acierto
 
 - **[Familia·Principio]** del catálogo (nombre canónico).
 - **Evidencia:** el elemento concreto — texto citado literal, posición ("botón inferior derecho"), o `archivo:línea` si el input es código. *Prohibido* un hallazgo cuyo sujeto sea "la interfaz" en general.
-- **Severidad** y **confianza** según las escalas de CONTEXT.md.
+- **Severidad** y **confianza** según las escalas de GLOSSARY.md.
 - **Fix concreto:** qué cambiar, redactado como instrucción implementable ("mover X a Y", "reescribir el label a '…'"), no como principio abstracto ("mejorar la jerarquía").
 
 Descartá todo hallazgo que no pueda cumplir la regla. Menos hallazgos con evidencia

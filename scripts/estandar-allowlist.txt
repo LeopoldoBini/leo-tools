@@ -66,4 +66,4 @@ src/app/app-routing.module.ts
 
 # Salida que yt-transcript escribe junto al transcript
 summary.md
-CONTEXT.md
+GLOSSARY.md

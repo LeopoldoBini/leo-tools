@@ -1,5 +1,5 @@
 ---
-description: "Barrido batch de la memoria del proyecto: detecta memorias stale, obsoletas, duplicadas y graduables a CLAUDE.md o CONTEXT.md. Solo reporta — aplica únicamente con OK explícito del usuario."
+description: "Barrido batch de la memoria del proyecto: detecta memorias stale, obsoletas, duplicadas y graduables a CLAUDE.md o GLOSSARY.md. Solo reporta — aplica únicamente con OK explícito del usuario."
 argument-hint: "(sin args = barrido completo) | \"solo Proyecto\" | \"solo Feedback\""
 allowed-tools: "Read, Grep, Glob, Bash"
 disable-model-invocation: true
@@ -19,7 +19,7 @@ Leer `MEMORY.md` y cada archivo apuntado. Verificar los claims contra la realida
 
 1. **VIGENTE** — correcta y todavía útil. No tocar.
 2. **STALE** — cita archivos/comandos/estados que ya no existen o cambiaron. Proponer la corrección concreta (o borrado si ya no aplica).
-3. **GRADUABLE** — confirmada en varias sesiones y describe cómo **ES** el sistema (no qué pasó). Proponer destino exacto: sección de CLAUDE.md (repo o global) o CONTEXT.md si es vocabulario, y qué queda en la memoria (borrarla o reducirla a puntero).
+3. **GRADUABLE** — confirmada en varias sesiones y describe cómo **ES** el sistema (no qué pasó). Proponer destino exacto: sección de CLAUDE.md (repo o global) o GLOSSARY.md si es vocabulario, y qué queda en la memoria (borrarla o reducirla a puntero).
 4. **OBSOLETA** — cerrada/histórica sin valor futuro (proyectos ✅ con todos los pendientes saldados, incidentes resueltos sin lección vigente). Proponer borrado, o compresión a 1 línea si tiene valor de registro.
 5. **FUSIONABLE** — solapa con otra memoria. Proponer el merge (cuál absorbe a cuál).
 
@@ -29,4 +29,4 @@ También detectar: punteros del índice sin archivo (o archivos sin puntero), `[
 
 Presentar una tabla: memoria | clasificación | evidencia (1 línea) | acción propuesta. Cerrar con el resumen de impacto (cuántas se borran/graduan/corrigen).
 
-**Regla dura:** este comando NO modifica nada por sí solo. El usuario revisa el reporte y decide; recién con su OK explícito se aplican las acciones (editar/borrar archivos de memoria, actualizar el índice, graduar contenido a CLAUDE.md o CONTEXT.md con commit si es archivo de repo).
+**Regla dura:** este comando NO modifica nada por sí solo. El usuario revisa el reporte y decide; recién con su OK explícito se aplican las acciones (editar/borrar archivos de memoria, actualizar el índice, graduar contenido a CLAUDE.md o GLOSSARY.md con commit si es archivo de repo).

@@ -5,7 +5,7 @@ atención**, no alfabéticamente: la familia dice *para qué sirve* el principio
 
 Este catálogo es el lenguaje compartido de las cuatro skills (`/ui-judge`, `/ux-design`,
 `/dark-pattern-scan`, `/ab-variant`). El modelo mental que las conecta (bucle + eje
-ético) está en `CONTEXT.md` del plugin.
+ético) está en `GLOSSARY.md` del plugin.
 
 ## Cómo leer cada entrada
 
