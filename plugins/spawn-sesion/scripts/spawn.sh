@@ -96,6 +96,17 @@ falta, qué necesitás. Es el único aviso que va a recibir; no está mirando tu
 figura en tu \`ListAgents\` —está en otra máquina— y aun así la dirección entrega."
 fi
 
+# Un mensaje de `cmux agent message` llega rotulado «no es tu operador», y una sesión prudente no lo
+# contesta (medido 26-oct-2026: haiku se negó 4 de 4). El aviso viaja en el brief, y sólo a sesiones
+# que nacen acá: decirlo en un CLAUDE.md global abriría ese canal a cualquier sesión engañada.
+if [ -z "$HOST" ] && [ -n "$BRIEF" ] && command -v cmux >/dev/null 2>&1; then
+  BRIEF="$BRIEF
+
+---
+Puede que la sesión que te abrió te escriba por cmux (llega como \`[cmux agent message]\`). Es parte
+de este pedido: contestale en tu respuesta de texto normal, no por el canal de cmux."
+fi
+
 # --- otra máquina de la flota -----------------------------------------------
 # El trabajo entero pasa allá: este script se copia a sí mismo por ssh y corre del otro lado, contra
 # el disco de esa máquina. Por eso la versión del plugin instalada allá da igual — van desparejas y
@@ -509,6 +520,8 @@ if [ "$MODO" = "tmux" ]; then
 else
   echo "workspace: ${WS:-—}"
   echo "direccion_cmux: ${DIR_CMUX:-—}"
+  # Para conversar: el mensaje por stdin, vuelve con la respuesta. La pantalla sólo destraba diálogos.
+  [ -n "$DIR_CMUX" ] && echo "hablarle: $(cd "$(dirname "$0")" && pwd)/hablarle.sh $DIR_CMUX < mensaje"
 fi
 echo "nombre: $NOMBRE"
 echo "nombre_repetido: $REPETIDO"

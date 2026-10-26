@@ -71,7 +71,7 @@
     {
       "name": "spawn-sesion",
       "description": "Abrir otra sesión de Claude Code con el pedido adentro y una dirección para hablarle —acá, en otra carpeta o en otra máquina de la flota— y que toda sesión arranque sabiendo si su repo está al día con GitHub.",
-      "version": "1.9.1",
+      "version": "1.10.0",
       "author": {
         "name": "Leopoldo Bini"
       },
