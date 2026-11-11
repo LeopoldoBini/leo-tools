@@ -507,6 +507,15 @@ if [ -z "$NOMBRE" ]; then
   exit 3
 fi
 
+# El tablero estratégico de Clawd Lab: la hija entra donde está la madre (su grupo, su prioridad, sus campañas),
+# con un lazo «abrió», en los frentes donde cae su carpeta. Solo con la madre en cmux de esta Mac y Clawd Lab
+# abierta; si no, no pasa nada (nunca hace fallar la sesión, que ya está creada).
+TABLERO_HIJA=""
+TB="${CLAWD_TABLERO:-$HOME/agent-tools/cmux-links/tablero.sh}"
+if [ -n "${CMUX_SURFACE_ID:-}" ] && [ -x "$TB" ] && [ "$MODO" != "tmux" ]; then
+  TABLERO_HIJA="$("$TB" hija "$CMUX_SURFACE_ID" "$UUID" "$DESTINO" 2>/dev/null | head -1 || true)"
+fi
+
 echo "estado: creada"
 echo "repo: $DESTINO"
 [ -n "$RAMA" ] && echo "rama: $RAMA"
@@ -525,5 +534,6 @@ else
 fi
 echo "nombre: $NOMBRE"
 echo "nombre_repetido: $REPETIDO"
+[ -n "$TABLERO_HIJA" ] && echo "tablero: $TABLERO_HIJA"
 [ -n "$BRIEFFILE" ] && echo "brief_tmp: $BRIEFFILE"
 exit 0
