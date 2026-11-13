@@ -3,9 +3,10 @@
 37 principios en 7 familias funcionales. Organizados por su **rol en el sistema de
 atención**, no alfabéticamente: la familia dice *para qué sirve* el principio.
 
-Este catálogo es el lenguaje compartido de las cuatro skills (`/ui-judge`, `/ux-design`,
-`/dark-pattern-scan`, `/ab-variant`). El modelo mental que las conecta (bucle + eje
-ético) está en `GLOSSARY.md` del plugin.
+Este catálogo da los nombres canónicos de los principios que citan `/glow-up` y
+`/ui-judge`. El modelo mental que los conecta (bucle + eje ético) está en `GLOSSARY.md`
+del plugin. Las familias A, C y D describen mecánicas de apps de consumo: en una
+pantalla de trabajo diario casi no aplican.
 
 ## Cómo leer cada entrada
 

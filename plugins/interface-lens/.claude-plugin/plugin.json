@@ -1,7 +1,7 @@
 {
   "name": "interface-lens",
-  "version": "1.4.1",
-  "description": "Psicología UX aplicada al código: /glow-up deja una vista hermosa y más usable, /ab-variant produce su par A|B, /ui-judge la audita contra 37 principios, /ux-design propone el flujo, /dark-pattern-scan caza patrones oscuros.",
+  "version": "2.0.0",
+  "description": "Interfaces sin AI slop: /glow-up deja una vista hermosa y más usable editando el código, /ui-judge la audita con evidencia —slop, uso y dark patterns—, y un detector mecánico mide el slop antes y después.",
   "author": {
     "name": "Leopoldo Bini",
     "email": "raul.leopoldobini@gmail.com"

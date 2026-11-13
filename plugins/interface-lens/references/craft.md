@@ -87,12 +87,9 @@ formateados con locale y unidad · fechas con día de la semana cuando importa �
 con `title` o tooltip · `aria-label` en todo botón que solo tiene icono · `alt` real en
 imágenes de contenido · el copy sin jerga interna del sistema.
 
-## Antipatrones — señales de UI generada al apuro
+## Antipatrones
 
-Gradiente violeta-fucsia sin marca que lo pida · sombra + borde + fondo distinto en la
-misma tarjeta · cinco tamaños de fuente arbitrarios · emojis como iconografía · todo el
-texto en el mismo gris · botones de tres colores compitiendo · `text-center` en párrafos
-largos · iconos de sets distintos mezclados · placeholder usado como label.
+Las señales de UI generada al apuro —el AI slop— viven en `slop.md`, con su detector.
 
 ## La regla de construcción
 

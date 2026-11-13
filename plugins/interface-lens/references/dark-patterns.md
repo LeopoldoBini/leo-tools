@@ -5,7 +5,7 @@ Detalle operativo de la fila "Taxonomía de dark patterns" del catálogo
 screenshot o copy) y **señales de flujo/código** (solo detectables recorriendo la
 interacción o leyendo la implementación). La investigación es clara: analizar una
 pantalla suelta pierde los patrones que emergen en la interacción — por eso
-`/dark-pattern-scan` rastrea flujos, no pantallas.
+`/ui-judge`, en una pantalla de compromiso, rastrea flujos y no pantallas.
 
 ## El test maestro: asimetría de fricción
 

@@ -1,28 +1,35 @@
 # interface-lens
 
-Juzgar, diseñar y construir interfaces con psicología UX **más la brújula que las
-listas de heurísticas no traen**: un eje ético (ético → persuasivo → oscuro) y la
+Mejorar y juzgar interfaces restando el AI slop, con psicología UX **más la brújula que
+las listas de heurísticas no traen**: un eje ético (ético → persuasivo → oscuro) y la
 prueba del arrepentimiento de Nir Eyal.
 
 ## La idea en una línea
 
-La psicología del enganche (bucle disparador→acción→recompensa→inversión, dopamina,
-recompensas variables) es un **motor** que sirve para dos fines opuestos: capturar al
-usuario o servirlo. Este plugin encapsula el motor como conocimiento de referencia y
-pone el juicio de dirección en el centro de las cinco skills.
+La IA genera interfaces con los mismos tics (gradientes, eyebrows, pills, bordes en todo,
+texto que se repite) y con la psicología del enganche apuntada a capturar en vez de
+servir. Este plugin resta lo primero y vigila lo segundo, en dos skills que el agente
+carga solo cuando está haciendo o revisando UI.
 
-## Skills (cinco verbos, invocación explícita)
-
-Una sola de las cinco **edita el código**: `/glow-up`. Es la puerta de entrada — el
-resto son para cuando querés juzgar, diseñar, testear o auditar antes de shippear.
+## Skills
 
 | Skill | Verbo | Qué hace |
 |---|---|---|
-| `/glow-up` | **Aplicar** | Le pasás una vista y la deja hermosa y más usable, editando el código: adopta los tokens y componentes del proyecto, aplica las diez reglas de craft visual y los siete lugares del pase funcional, y verifica con screenshot del antes y el después. Sin score ni diagnóstico. |
-| `/ui-judge` | **Juzgar** | Audita screenshot/URL/código contra 37 principios en 7 familias (A–G). Hallazgos con evidencia concreta, score por familia, banderas de dark patterns, fixes priorizados. |
-| `/ux-design` | **Diseñar** | Propone flujos mapeados al bucle, declarando qué principio usa cada decisión y por qué sirve al usuario. Guardas éticas y trade-offs obligatorios. |
-| `/ab-variant` | **Variar** | Convierte una pantalla de decisión en un par A|B: nombra la pregunta que le hace al usuario, la canjea por una más fácil y deriva deltas mínimos con principio, gate ético e implementación. |
-| `/dark-pattern-scan` | **Auditar** | Escaneo adversarial pre-ship: rastrea flujos (suscripción, checkout, consentimiento), mide asimetría de fricción entrada/salida, reporte pasa/falla con evidencia por línea. |
+| `/glow-up` | **Aplicar** | Edita la vista: resta el slop, aplica las diez reglas de craft y el pase funcional, y verifica con screenshot y detector antes/después. |
+| `/ui-judge` | **Juzgar** | Solo lee: slop, uso y terminación, y —si la pantalla pide un compromiso— dark patterns con asimetría de fricción. Hallazgos con `archivo:línea`. |
+
+Las dos son visibles al modelo: una skill que depende de que alguien se acuerde de
+invocarla no se usa. Ninguna orquesta.
+
+## El detector
+
+`scripts/slop-scan.mjs` mide el slop mecánico sobre el código: cuántos indicadores
+distintos aparecen juntos, con `archivo:línea`. Corre con node o bun, sin dependencias;
+`--reglas` lista lo que mira. Tests: `node --test` en `scripts/`.
+
+```bash
+node scripts/slop-scan.mjs <carpeta-de-la-vista> [--json]
+```
 
 ## Estructura
 
@@ -30,12 +37,15 @@ resto son para cuando querés juzgar, diseñar, testear o auditar antes de shipp
 interface-lens/
   GLOSSARY.md                ← lenguaje compartido: bucle, eje ético, escalas, el par
   references/
-    principles.md            ← catálogo de 37 principios (familias A–G)
-    dark-patterns.md         ← taxonomía operativa con señales de código por patrón
-    ab-pairs.md              ← método de la familia G: la pregunta, el canje, los deltas
+    slop.md                  ← AI slop: cómo correr el detector, indicadores de juicio, cómo se resta
     craft.md                 ← cómo se ve una UI terminada: las diez reglas de ejecución
+    ab-pairs.md              ← la pregunta, el canje, los siete lugares de un delta
+    dark-patterns.md         ← taxonomía operativa con señales de código por patrón
+    principles.md            ← catálogo de 37 principios (familias A–G), nombres canónicos
+  scripts/
+    slop-scan.mjs            ← detector mecánico (+ test y fixtures)
   skills/
-    glow-up/  ui-judge/  ux-design/  ab-variant/  dark-pattern-scan/
+    glow-up/  ui-judge/
 ```
 
 ## Principios de diseño del plugin
@@ -44,7 +54,7 @@ interface-lens/
 - **Flujos, no pantallas:** los dark patterns más graves (roach motel, forced continuity) solo emergen en la interacción — por eso el scan rastrea rutas de entrada/salida en el código.
 - **Honestidad sobre límites:** cada auditoría declara qué NO pudo evaluarse desde el input recibido.
 - **Norte time-well-spent:** tarea cumplida bien, no tiempo en app.
-- **Un cambio atribuible:** un par A|B con la presentación como única variable enseña algo; un rediseño entero no, porque el resultado no se puede atribuir a nada.
+- **Restar antes que sumar:** el modelo tiende a agregar; casi toda mejora real de una UI generada empieza por sacar.
 
 ## Vecinos
 

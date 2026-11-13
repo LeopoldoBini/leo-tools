@@ -1,6 +1,6 @@
 # GLOSSARY.md — lenguaje compartido de interface-lens
 
-Glosario canónico del dominio. Las cinco skills razonan con este modelo mental; los
+Glosario canónico del dominio. Las dos skills razonan con este modelo mental; los
 términos de acá son los únicos nombres válidos para estos conceptos.
 
 `/glow-up` es la excepción parcial: **aplica** en vez de juzgar, así que usa estos
@@ -58,7 +58,7 @@ o **capturarlo**.
 | **Asimetría de fricción** | Pasos para entrar vs. pasos para salir de un compromiso. Test maestro de `dark-patterns.md`. | — |
 | **Dark pattern** | Mecánica que falla la prueba del arrepentimiento Y está en la taxonomía de `dark-patterns.md`. | mal diseño sin intención (eso es un hallazgo de usabilidad, no un dark pattern) |
 
-## Escalas compartidas (usadas por las 3 skills)
+## Escalas compartidas (las usa `/ui-judge`)
 
 - **Severidad de hallazgo:** `bloqueante` (dark pattern confirmado o tarea imposible) · `alta` (fricción/confusión que hace fallar la tarea a una parte de los usuarios) · `media` (fricción notable, tarea completable) · `baja` (pulido).
 - **Confianza:** `alta` (evidencia directa en el input) · `media` (inferencia razonable) · `baja` (hipótesis, requiere verificar con el input completo o con usuarios).

@@ -1,93 +1,117 @@
 ---
 name: ui-judge
-description: Audita una interfaz (screenshot, URL o código) contra 37 principios de psicología UX en 7 familias más el eje ético. Devuelve hallazgos anclados a evidencia, score por familia, banderas de dark patterns y fixes priorizados.
-disable-model-invocation: true
+description: Audita una interfaz sin editarla (código, URL o screenshot) buscando AI slop, problemas de uso y, si pide un compromiso, dark patterns, con evidencia por hallazgo. Usar al revisar un diff que toca UI o cuando piden juzgar una pantalla.
 ---
+
+<!-- model-invocable: solo lee y reporta; no edita, no crea issues ni despacha nada. Tiene que poder cargarla el revisor de un diff de UI sin que Leo la pida. -->
 
 # /ui-judge — auditoría de interfaz
 
-Auditás una interfaz contra el catálogo de principios y el eje ético. Tu valor no es
-citar leyes UX: es **anclar cada hallazgo a evidencia concreta del input** y aplicar
-el filtro ético que las listas de heurísticas no tienen.
+Juzgás una interfaz y devolvés hallazgos. **No editás**: si hay que arreglar, eso es
+`/glow-up`. Tu valor es **anclar cada hallazgo a evidencia concreta** y decir lo que el
+que la hizo no ve: el slop que metió sin darse cuenta y, si la pantalla pide un
+compromiso, si manipula.
 
-## Paso 0 — Cargar la base de conocimiento
+## Paso 0 — Cargar la rúbrica
 
-Leé estos tres archivos ANTES de mirar el input (son la rúbrica):
+1. `${CLAUDE_PLUGIN_ROOT}/references/slop.md` — siempre.
+2. `${CLAUDE_PLUGIN_ROOT}/references/craft.md` — siempre: sus reglas son el criterio de uso y terminación.
+3. `${CLAUDE_PLUGIN_ROOT}/GLOSSARY.md` — escalas de severidad y confianza, eje ético.
+4. Solo si la pantalla pide una decisión o un compromiso (Paso 1): `references/ab-pairs.md` y `references/dark-patterns.md`.
 
-1. `${CLAUDE_PLUGIN_ROOT}/GLOSSARY.md` — bucle, eje ético, escalas de severidad/confianza
-2. `${CLAUDE_PLUGIN_ROOT}/references/principles.md` — las 7 familias A–G
-3. `${CLAUDE_PLUGIN_ROOT}/references/dark-patterns.md` — taxonomía operativa
+## Paso 1 — Delimitar y clasificar
 
-## Paso 1 — Clasificar el input y declarar límites
+**Qué se audita.** Con un diff, la superficie es el código de UI tocado más los flujos que
+ese código afecta. Si no, la vista o el flujo que te señalaron.
 
-| Input | Cómo procesarlo | Qué NO se puede evaluar desde ahí |
+**Qué input hay, y qué no se puede ver desde ahí:**
+
+| Input | Cómo | No evaluable desde ahí |
 |---|---|---|
-| **Screenshot(s)** | Read (visión) | Latencia (B·Doherty), flujos multi-paso, estados hover/error, dark patterns de interacción |
-| **URL** | Si hay Playwright/browser disponible: navegar y capturar screenshots de los estados clave. Si no: WebFetch (HTML + copy) y declarar que se audita estructura y texto, no render | Con solo HTML: jerarquía visual real, estética, thumb zone |
-| **Código de componente/vista** | Read de los archivos | Percepción visual real (colores/espaciado renderizados), a menos que haya estilos explícitos |
+| Código | Read + detector | render real: composición, contraste efectivo |
+| URL | Playwright: screenshots de los estados clave; sin browser, HTML + copy | sin browser: jerarquía visual, estética |
+| Screenshot | visión | estados, flujos, código; el detector no corre |
 
-Si el usuario no aclaró el **contexto de la tarea del usuario final** (¿qué vino a
-lograr la persona a esta pantalla?), preguntalo en UNA sola pregunta antes de auditar
-— sin tarea de referencia no hay veredicto, solo opinión estética.
+Si hay código y la app se puede levantar, mirá también el render: la capa de juicio del
+slop necesita verlo.
 
-## Paso 2 — Auditar por familia (A–G)
+**Qué pide la pantalla.** Clasificala en una línea:
 
-Recorré las 7 familias en orden. Por cada familia, buscá violaciones Y aciertos
-(los aciertos importan: el reporte no es una lista de defectos, es un juicio).
+- **De trabajo** (gestión, listados, formularios internos, paneles): el uso recurrente manda.
+- **De decisión** (paywall, checkout, pricing, onboarding, ficha de producto).
+- **De compromiso** (alta o baja de suscripción, consentimiento, permisos, cancelación).
 
-**Regla anti-vaguedad (obligatoria):** cada hallazgo DEBE tener:
+Las de decisión y compromiso suman el Paso 4.
 
-- **[Familia·Principio]** del catálogo (nombre canónico).
-- **Evidencia:** el elemento concreto — texto citado literal, posición ("botón inferior derecho"), o `archivo:línea` si el input es código. *Prohibido* un hallazgo cuyo sujeto sea "la interfaz" en general.
-- **Severidad** y **confianza** según las escalas de GLOSSARY.md.
-- **Fix concreto:** qué cambiar, redactado como instrucción implementable ("mover X a Y", "reescribir el label a '…'"), no como principio abstracto ("mejorar la jerarquía").
+## Paso 2 — Slop
 
-Descartá todo hallazgo que no pueda cumplir la regla. Menos hallazgos con evidencia
-valen más que muchos genéricos — la precisión del juicio es la reputación de la skill.
+1. Corré el detector sobre los archivos (`slop.md` dice cómo) y quedate con su veredicto
+   y sus `archivo:línea`.
+2. Recorré la tabla de juicio de `slop.md` sobre el render o el copy.
+3. Descartá lo que es identidad del sistema del proyecto, y decilo.
+4. Marcá todo lo **duplicado en pantalla**: el mismo dato, la misma idea o el mismo
+   control dos veces. La duplicación de código, en cambio, es del revisor de código, no
+   de acá.
 
-**Si la pantalla pide una decisión** (paywall, checkout, onboarding, ficha de producto,
-selector de opciones), la familia G se audita con el método de `references/ab-pairs.md`:
-nombrá **la pregunta** que cada elemento le hace al usuario y auditá los siete lugares
-del delta. El fix de un hallazgo G es el canje por la pregunta fácil; el par completo lo
-produce `/ab-variant`.
+## Paso 3 — Uso y terminación
 
-## Paso 3 — Filtro ético (familia F sobre todo lo demás)
+Recorré `craft.md` como criterio: jerarquía con un solo primario, espaciado por grupos,
+estados completos (vacío, error, loading, foco), contraste, toque y 360px. Cada regla
+que falla con evidencia es un hallazgo; las que no se pueden ver desde el input van a
+"No evaluable".
 
-Por cada mecánica de enganche detectada (🟡/🔴 en el catálogo):
+## Paso 4 — Decisión y compromiso (solo si aplica)
 
-1. Nombrá el patrón y su evidencia.
-2. Aplicá la **prueba del arrepentimiento**: ¿el usuario agradecería esto si supiera cómo funciona?
-3. Veredicto: 🟢 pasa / 🟡 pasa con condiciones (declararlas) / 🔴 falla → bandera de dark pattern con referencia a `dark-patterns.md`.
+- **Pantalla de decisión:** nombrá **la pregunta** que le hace cada elemento clave al
+  usuario y recorré los siete lugares de `ab-pairs.md`. El fix es el canje por la
+  pregunta fácil.
+- **Pantalla de compromiso:** trazá la ruta de **entrada** y la de **salida** en el
+  código (pasos, canal) y medí la **asimetría de fricción**. Recorré la taxonomía de
+  `dark-patterns.md` con sus señales de código: countdowns hardcodeados, stock aleatorio
+  en el cliente, `checked` en opciones con costo, negativas que no se persisten,
+  handlers que hacen más de lo que dice su label.
+- A cada mecánica persuasiva, la **prueba del arrepentimiento**: 🟢 / 🟡 (con condición) / 🔴.
+  Si un dark pattern confirmado choca con la regulación (sección regulatoria de
+  `dark-patterns.md`), marcalo: es pasivo legal, no solo deuda de UX.
 
-Si hay señales de dark patterns de flujo (suscripción, checkout, consentimiento) que
-el input estático no permite confirmar, listalos como **sospechas a verificar** y
-sugerí correr `/dark-pattern-scan` sobre el código del flujo.
+Distinguí **dark pattern** (falla la prueba y está en la taxonomía) de mal diseño sin
+manipulación: lo segundo va al Paso 3.
 
-## Paso 4 — Score y reporte
+## Regla de evidencia
 
-Estructura de salida (en el chat; NADA de artifacts salvo pedido explícito):
+Cada hallazgo lleva:
+
+- **Qué** — indicador de `slop.md`, regla de `craft.md` o patrón de `dark-patterns.md`, por su nombre.
+- **Evidencia** — `archivo:línea`, texto citado literal o posición en el screenshot. Prohibido un hallazgo cuyo sujeto sea "la interfaz".
+- **Severidad · confianza** — escalas de `GLOSSARY.md`.
+- **Fix** — instrucción implementable ("borrar el eyebrow de `Hero.tsx:12`"), no un principio.
+
+Lo que no cumple, se descarta. Pocos hallazgos con evidencia valen más que muchos
+genéricos.
+
+## Paso 5 — Reporte
+
+En el chat, nada de artifacts salvo pedido:
 
 ```
-## Veredicto — <una línea: la impresión de juicio global>
+## Veredicto — <una línea>
+Slop: <limpio | sospechoso | slop> (N indicadores; detector + juicio)
+Dark patterns: PASA / FALLA   ← solo si hubo Paso 4. FALLA con ≥1 hallazgo
+                                 bloqueante o alto de confianza alta.
 
-## Score por familia
-| Familia | Score /10 | Nota breve |
-(A–G; la familia F puede VETAR: con un dark pattern confirmado el global ≤ 4)
-**Global: N/10** (promedio ponderado por peso de los principios evaluables)
-
-## Hallazgos (rankeados por severidad)
-1. [Familia·Principio] — severidad · confianza
+## Hallazgos (por severidad)
+1. <qué> — severidad · confianza
    Evidencia: …
    Fix: …
 
-## Ética
-Mecánicas de enganche + prueba del arrepentimiento por cada una.
+## Asimetría de fricción   ← solo pantallas de compromiso
+Entrada vs. salida por compromiso: pasos y canal.
 
 ## No evaluable desde este input
-Qué quedó fuera (latencia, flujos, estados) y cómo completarlo.
+Qué quedó afuera y cómo completarlo. Lo no mirado no está aprobado.
 
-## Top 3 fixes (si hago solo tres cosas, estas)
+## Si hago solo tres cosas
 ```
 
-La sección "No evaluable" es obligatoria: la honestidad sobre los límites del input
-distingue una auditoría de una alucinación.
+Sin puntajes por familia. Cerrá ofreciendo, sin ejecutarlo, `/glow-up` para aplicar los
+fixes visuales.

@@ -2,8 +2,8 @@
 
 Cómo se opera la familia G del catálogo (`principles.md`). Los principios dicen *qué*
 mueve la conducta; este archivo dice *cómo* se convierte una pantalla en dos y se
-justifica cada cambio. Lo usa `/ab-variant`; `/ui-judge` lo lee cuando audita una
-pantalla de decisión.
+justifica cada cambio. Lo usa `/glow-up` en su pase funcional; `/ui-judge` lo lee cuando
+audita una pantalla de decisión.
 
 ## La regla
 
