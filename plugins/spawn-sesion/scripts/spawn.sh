@@ -531,6 +531,8 @@ else
   echo "direccion_cmux: ${DIR_CMUX:-—}"
   # Para conversar: el mensaje por stdin, vuelve con la respuesta. La pantalla sólo destraba diálogos.
   [ -n "$DIR_CMUX" ] && echo "hablarle: $(cd "$(dirname "$0")" && pwd)/hablarle.sh $DIR_CMUX < mensaje"
+  # El link que Clawd Lab abre con un clic (la trae al frente o la retoma si se cerró): va con su nombre ante el usuario.
+  echo "link: http://localhost:47823/claude/$(tr 'A-F' 'a-f' <<<"$UUID")"
 fi
 echo "nombre: $NOMBRE"
 echo "nombre_repetido: $REPETIDO"

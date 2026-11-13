@@ -125,10 +125,10 @@ El script devuelve el nombre y una referencia, de cmux o de tmux según dónde n
   `nombre_alla` es el nombre que le tocó en su propia máquina: sirve para reconocerla allá, no para
   hablarle desde acá.
 
-**Ante el usuario, la sesión se llama siempre por su `nombre`** —el que le puso Claude Code, el de
-`ListAgents`—: al confirmarla, al reportar, cada vez que vuelva a la charla. Las referencias son para
-tus comandos; con nombre repetido, van entre paréntesis para desempatar. Terminás cuando el usuario
-tiene ese nombre en la mano: es lo que después le deja pedirte "preguntale a esa".
+**Ante el usuario, la sesión se llama siempre por su `nombre` hecho link** (el de `ListAgents`, con la URL de la línea
+`link:`): `[cn-whatsapp-b2](http://localhost:47823/claude/<id>)`, al confirmarla y cada vez que vuelva a la charla; un
+clic en Clawd Lab la trae o la retoma. Nacida en otra máquina, el nombre solo. Las referencias son para tus comandos;
+con nombre repetido, van entre paréntesis. Terminás cuando el usuario tiene ese link en la mano: "preguntale a esa".
 
 ## Guardrails
 
