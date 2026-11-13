@@ -38,8 +38,10 @@ sesión", y lo que hay que mandar está en la conversación, no en el argumento.
   alcanza por su `nombre`. Al revés no te ve, así que para que reporte sola al terminar pasale
   `--reportar-a bridge:session_<id>`, el del enlace de esta sesión. Sin esa dirección el retorno se
   abre igual: un `SendMessage` apenas nace le deja por dónde contestarte.
-- **Modelo**: si el pedido nombra uno ("con fable"), va en `--model` al abrir. Se fija al nacer:
-  `/model` sólo existe tipeado por el usuario, la sesión no puede cambiárselo a sí misma.
+- **Modelo**: va siempre en `--model`, se fija al nacer. El que nombre el pedido; si no, lo elige el
+  encargo. **Verificable** —tests, spec, migración, lanzar un pipeline— o que debe salir perfecto →
+  `opus`, la cuota abundante. **Sin vara objetiva** —diseñar, opciones, cuestionar el encargo— →
+  `fable`, la escasa. Al confirmarle la sesión al usuario, decí con qué modelo nació.
 - **Árbol de trabajo**: la sesión nueva abre en la carpeta tal cual, compartiendo el árbol. Si
   necesita uno propio lo decide ella, que tiene el repo delante y sabe si va a escribir. Abrila en un
   árbol aparte sólo si el usuario lo pide.
@@ -69,9 +71,7 @@ lo que corresponde hacer:
 Una ruta existente se usa tal cual; un fragmento se busca entre los repos, descubiertos por `.git`
 cada vez, sin lista escrita a mano que se pudra. `--help` tiene las opciones — entre ellas
 `--brief-file`, que toma derecho el archivo de traspaso que deja el skill de handoff.
-
-Agregá `--bg` sólo si el usuario pide que no se vea. Que se vea es lo bueno: la lee y la puede tomar
-él mismo.
+Agregá `--bg` sólo si el usuario pide que no se vea: visible, la lee y la puede tomar él mismo.
 
 Termina con `estado:`, y ahí está todo:
 
